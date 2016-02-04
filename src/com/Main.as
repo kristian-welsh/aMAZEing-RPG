@@ -1,13 +1,9 @@
 package com{
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import com.mvc.*;
 	
-	/**
-	 * ...
-	 * @author Kristian Welsh
-	 */
 	public class Main extends Sprite {
-		
 		public function Main() {
 			if (stage) init();
 			else addEventListener(Event.ADDED_TO_STAGE, init);
@@ -15,9 +11,10 @@ package com{
 		
 		private function init(e:Event = null):void {
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			// entry point
+			var model:ModelManager = new ModelManager();
+			var view:ViewManager = new ViewManager(stage, model.getSignaler());
+			model.doThing();
+			var controller:ControllerManager = new ControllerManager();
 		}
-		
 	}
-	
 }
