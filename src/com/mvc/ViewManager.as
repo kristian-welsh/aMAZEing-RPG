@@ -16,6 +16,8 @@ package com.mvc {
 		}
 		
 		public function foop(data:Object):void {
+			graphics.graphics.lineStyle(1);
+			graphics.graphics.lineTo(data.x, data.y);
 		}
 	}
 }
