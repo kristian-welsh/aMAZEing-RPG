@@ -4,6 +4,7 @@ package com.signal {
 		private var callbacks:Array = [];
 		
 		public function signal(signalType:Object, data:Object = null):void {
+			data = data || { };
 			for each(var callback:Object in callbacks) {
 				if (callback.type === signalType || callback.type === Signals.PROPOGATE) {
 					data["signalType"] = signalType;

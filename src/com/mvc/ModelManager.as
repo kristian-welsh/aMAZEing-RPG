@@ -1,6 +1,6 @@
 package com.mvc {
 	import com.keys.Keys;
-	import com.PlayerModel;
+	import com.player.PlayerModel;
 	import com.signal.*;
 	import flash.ui.Keyboard;
 	
@@ -19,13 +19,11 @@ package com.mvc {
 			signaler.propagate(player.getSignaler());
 		}
 		
-		public function tick():void {
+		public function tick(data:Object = null):void {
 			player.updatePosition(keys.isPressed(Keyboard.LEFT),
 				keys.isPressed(Keyboard.UP),
 				keys.isPressed(Keyboard.RIGHT),
 				keys.isPressed(Keyboard.DOWN));
-			
-			signaler.signal(Signals.PLAYER_MOVEMENT, {"x":10, "y":20});
 		}
 		
 		public function getSignaler():Signaler {

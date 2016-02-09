@@ -6,7 +6,7 @@ package com{
 	import com.mvc.*;
 	
 	public class Main extends Sprite {
-		static private const FPS:uint = 60;
+		static private const FPS:uint = 480;
 		
 		public function Main() {
 			if (stage) init();
@@ -20,7 +20,7 @@ package com{
 			var controller:ControllerManager = new ControllerManager(stage);
 			var model:ModelManager = new ModelManager(loop.getSignaler(), controller.getKeys());
 			var view:ViewManager = new ViewManager(stage, model.getSignaler());
-			model.tick();
+			loop.play();
 		}
 	}
 }

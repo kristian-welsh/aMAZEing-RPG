@@ -1,6 +1,7 @@
 package com.mvc {
 	import com.keys.Keys;
 	import flash.events.EventDispatcher;
+	
 	public class ControllerManager {
 		private var keys:Keys;
 		
