@@ -1,11 +1,15 @@
 package com.signal {
+	import org.flashdevelop.utils.FlashConnect;
 	public class Signaler {
 		private var callbacks:Array = [];
 		
 		public function signal(signalType:Object, data:Object = null):void {
-			for each(var callback:Object in callbacks)
-				if (callback.type === signalType || callback.type === Signals.PROPOGATE)
-					callback.func(data, signalType);
+			for each(var callback:Object in callbacks) {
+				if (callback.type === signalType || callback.type === Signals.PROPOGATE) {
+					data["signalType"] = signalType;
+					callback.func(data);
+				}
+			}
 		}
 		
 		public function awaitSignal(signalType:Object, callback:Function):void {
@@ -13,8 +17,8 @@ package com.signal {
 		}
 		
 		public function propagate(object:Signaler):void {
-			object.awaitSignal(Signals.PROPOGATE, function(data:Object, signalType:Object):void {
-				signal(signalType, data);
+			object.awaitSignal(Signals.PROPOGATE, function(data:Object):void {
+				signal(data.signalType, data);
 			});
 		}
 	}
