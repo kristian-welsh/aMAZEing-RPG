@@ -1,8 +1,10 @@
 package com{
 	import asunit.textui.TestRunner;
+	import com.maze.src.MazeSetup;
 	import com.signal.Signals;
 	import com.test.TestCases;
 	import com.timing.GameLoop;
+	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import com.mvc.*;
@@ -35,6 +37,9 @@ package com{
 			var controller:ControllerManager = new ControllerManager(stage);
 			var model:ModelManager = new ModelManager(loop.getSignaler(), controller.getKeys());
 			var view:ViewManager = new ViewManager(stage, model.getSignaler());
+			var mazeSetup:MazeSetup = new MazeSetup();
+			var mazeDisplay:DisplayObject = mazeSetup.doIt();
+			stage.addChild(mazeDisplay);
 			loop.play();
 		}
 	}

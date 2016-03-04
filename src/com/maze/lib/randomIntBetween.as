@@ -1,7 +1,5 @@
-define(function(require) {
-  // returns any int between and including the arguments.
-  function randomIntBetween(lowerBound, upperBound) {
+package com.maze.lib {
+  public function randomIntBetween(lowerBound:int, upperBound:int):int {
     return Math.round(Math.random() * (upperBound - lowerBound)) + lowerBound;
   }
-  return randomIntBetween;
-});
+}
