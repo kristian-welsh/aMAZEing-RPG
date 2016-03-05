@@ -6,20 +6,22 @@ package com.maze.src {
 	import com.Settings;
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
+	import flash.geom.Point;
 	
 	public class MazeSetup {
 		public function doIt():DisplayObject {
-			var display:DisplayObject = new Sprite();
+			var display:Sprite = new Sprite();
 			var drawer:Drawer = new Drawer(display);
 			var maze:Maze = new Maze(new Random(), drawer, new MazeEdgeDrawer(), new MazeJoinDrawer());
 			initGraphics(display);
 			maze.create(new Point(0, 0));
+			return display;
 		}
 		
-		private function initGraphics(display):void {
+		private function initGraphics(display:Sprite):void {
 			display.graphics.lineStyle(Settings.WALL_DEPTH);
 			display.graphics.beginFill(0xDDDDDD);
-			display.graphics.rect(Settings.EDGE_PADDING, Settings.EDGE_PADDING, Settings.EDGE_PADDING + Settings.CANVAS_WIDTH - Settings.TILE_WIDTH, Settings.EDGE_PADDING + Settings.CANVAS_HEIGHT - Settings.TILE_HEIGHT);
+			display.graphics.drawRect(Settings.EDGE_PADDING, Settings.EDGE_PADDING, Settings.EDGE_PADDING + Settings.CANVAS_WIDTH - Settings.TILE_WIDTH, Settings.EDGE_PADDING + Settings.CANVAS_HEIGHT - Settings.TILE_HEIGHT);
 			display.graphics.endFill();
 		}
 	}

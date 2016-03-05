@@ -1,6 +1,6 @@
-package com.maze.lib {
+package {
   public function times(numCalls:uint, func:Function):void {
-    for (var curCall = 0; curCall < numCalls; curCall++)
+    for (var curCall:uint = 0; curCall < numCalls; curCall++)
       func(curCall);
   }
 }

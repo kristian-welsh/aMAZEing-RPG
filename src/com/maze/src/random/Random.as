@@ -6,7 +6,7 @@ package com.maze.src.random {
 		}
 		
 		public function randomElement(array:Array):Object {
-			return array[this.intInBounds(0, array.length - 1)];	
+			return array[intInBounds(0, array.length - 1)];	
 		}
 	}
 }
