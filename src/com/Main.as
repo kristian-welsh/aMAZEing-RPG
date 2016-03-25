@@ -1,6 +1,7 @@
 package com{
 	import asunit.textui.TestRunner;
 	import com.maze.src.MazeSetup;
+	import com.obstacle.Obstacle;
 	import com.signal.Signals;
 	import com.test.TestCases;
 	import com.timing.GameLoop;
@@ -35,11 +36,14 @@ package com{
 		private function startGame():void {
 			var loop:GameLoop = new GameLoop(1000 / FPS);
 			var controller:ControllerManager = new ControllerManager(stage);
-			var model:ModelManager = new ModelManager(loop.getSignaler(), controller.getKeys());
+			var obstacle:Obstacle = new Obstacle();
+			var model:ModelManager = new ModelManager(loop.getSignaler(), controller.getKeys(), obstacle);
 			var view:ViewManager = new ViewManager(stage, model.getSignaler());
 			var mazeSetup:MazeSetup = new MazeSetup();
 			var mazeDisplay:DisplayObject = mazeSetup.doIt();
-			stage.addChild(mazeDisplay);
+			stage.addChild(obstacle);
+			//stage.addChild(mazeDisplay);
+			model.start()
 			loop.play();
 		}
 	}

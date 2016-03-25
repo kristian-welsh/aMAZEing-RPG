@@ -1,5 +1,6 @@
 package com.mvc {
 	import com.keys.Keys;
+	import com.obstacle.Obstacle;
 	import com.player.PlayerModel;
 	import com.signal.*;
 	import flash.ui.Keyboard;
@@ -10,13 +11,17 @@ package com.mvc {
 		private var player:PlayerModel;
 		private var keys:Keys;
 		
-		public function ModelManager(tickSignaler:Signaler, keys:Keys) {
+		public function ModelManager(tickSignaler:Signaler, keys:Keys, obstacle:Obstacle) {
 			super();
 			tickSignaler.awaitSignal(Signals.TICK_MODELS, tick);
 			
-			player = new PlayerModel();
+			player = new PlayerModel([obstacle]);
 			this.keys = keys;
 			signaler.propagate(player.getSignaler());
+		}
+		
+		public function start():void {
+			player.start();
 		}
 		
 		public function tick(data:Object = null):void {
