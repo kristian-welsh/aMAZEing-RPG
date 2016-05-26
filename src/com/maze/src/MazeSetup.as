@@ -10,13 +10,13 @@ package com.maze.src {
 	import flash.geom.Point;
 	
 	public class MazeSetup {
-		public function doIt():DisplayObject {
-			var display:Sprite = new Sprite();
-			var drawer:Drawer = new Drawer(display);
+		
+		public function doIt():Array {
+			var startPoint:Point = new Point(0, 0);
+			var drawer:Drawer = new Drawer();
 			var maze:Maze = new Maze(new Random(), drawer, new MazeEdgeDrawer(), new MazeJoinDrawer());
-			display.graphics.lineStyle(Settings.WALL_DEPTH, 0x0000000, 1, false, "normal", "square");
-			maze.create(new Point(0, 0));
-			return display;
+			maze.create(startPoint);
+			return drawer.walls;
 		}
 	}
 }

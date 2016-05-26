@@ -2,7 +2,6 @@ package com.player {
 	import com.Colours;
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
-	import org.flashdevelop.utils.FlashConnect;
 	public class PlayerView {
 		private var graphics:Sprite = new Sprite();
 		
@@ -13,9 +12,9 @@ package com.player {
 		private function drawGraphics():void {
 			graphics.graphics.beginFill(com.Colours.LIGHT_RED);
 			graphics.graphics.moveTo(0, 0);
-			graphics.graphics.lineTo(50, 0);
-			graphics.graphics.lineTo(50, 50);
-			graphics.graphics.lineTo(0, 50);
+			graphics.graphics.lineTo(25, 0);
+			graphics.graphics.lineTo(25, 25);
+			graphics.graphics.lineTo(0, 25);
 			graphics.graphics.lineTo(0, 0);
 			graphics.graphics.endFill();
 		}

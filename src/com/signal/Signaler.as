@@ -1,5 +1,4 @@
 package com.signal {
-	import org.flashdevelop.utils.FlashConnect;
 	public class Signaler {
 		private var callbacks:Array = [];
 		

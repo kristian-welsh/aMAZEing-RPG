@@ -5,7 +5,6 @@ package com.maze.src.maze {
 	import com.maze.src.random.Random;
 	import com.Settings;
 	import flash.geom.Point;
-	import org.flashdevelop.utils.FlashConnect;
 	
 	// 0 = unvisited
 	// 1 = visited
@@ -125,16 +124,12 @@ package com.maze.src.maze {
 			throw new Error(":( no disallowed direction, it jumped to an isolated cell");
 		}
 		
-		private function shouldStopGenerating(currentPoint:Point):Boolean {
-			return currentPoint.x >= Settings.NUM_COLUMNS;
-		}
-		
 		private function process(cell:Point, prevCell:Point):void {
 			setCellVisited(cell);
 			mazeEdgeDrawer.process(cell);
 			mazeJoinDrawer.process(cell, prevCell, maze)
 		}
-		
+		// I think the off by one error for maze draing is here, >= should be >  ...?
 		private function getVisiedValueAt(point:Point):int {
 			if (point.y < 0 || point.x < 0 || point.x >= Settings.NUM_COLUMNS || point.y >= Settings.NUM_ROWS)
 				return -1;
