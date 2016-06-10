@@ -32,22 +32,22 @@ package com.collision {
 				curCollider = colliders[i] as Collider;
 				if(left) {
 					if (leftCollision(player, speed, curCollider)) {
-						result[0] = Math.max(result[0], player.getX());
+						result[0] = curCollider.getX() + curCollider.getWidth() + 1;
 					}
 				}
 				if(right) {
 					if (rightCollision(player, speed, curCollider)) {
-						result[0] = Math.min(result[0], player.getX());
+						result[0] = curCollider.getX() - player.getWidth() - 1;
 					}
 				}
 				if(up) {
 					if (upCollision(player, speed, curCollider)) {
-						result[1] = Math.max(result[1], player.getY());
+						result[1] = curCollider.getY() + curCollider.getHeight() + 1;
 					}
 				}
 				if(down) {
 					if (downCollision(player, speed, curCollider)) {
-						result[1] = Math.min(result[1], player.getY());
+						result[1] = curCollider.getY() - player.getHeight() - 1;
 					}
 				}
 			}
